@@ -1,0 +1,16 @@
+---
+
+- name: Set timezone to Europe/Moscow
+  become: yes
+  timezone:
+    name: Europe/Moscow
+
+- name: generate locale
+  locale_gen:
+    name: en_US.UTF-8
+    state: present
+
+- name: set locale
+  become: yes
+  shell: update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8
+  
